@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>605972273006-m68fpohpr7vvbmcu7r5gdl65qtihlpb0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.605972273006-m68fpohpr7vvbmcu7r5gdl65qtihlpb0</string>
+	<key>API_KEY</key>
+	<string>AIzaSyAFd8XRz4fyC97TBnop2jl_1w1V4uhIL7E</string>
+	<key>GCM_SENDER_ID</key>
+	<string>605972273006</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.arrijal.history</string>
+	<key>PROJECT_ID</key>
+	<string>history-client-app</string>
+	<key>STORAGE_BUCKET</key>
+	<string>history-client-app.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:605972273006:ios:9ae30aa6439a321c87937f</string>
+</dict>
+</plist>
