@@ -7,9 +7,9 @@
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:605972273006:android:85ea8f22bd6192ca87937f",
+        "mobilesdk_app_id": "1:605972273006:android:aef52d8f065225e787937f",
         "android_client_info": {
-          "package_name": "com.example.history"
+          "package_name": "com.arrijal.history"
         }
       },
       "oauth_client": [
