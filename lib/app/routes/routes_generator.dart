@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:history/app/pages/home/ui/home_ui.dart';
+import 'package:history/shared/analytics.dart';
+import 'package:history/shared/locator.dart';
 
 import 'routes.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
-    // locator<AnalyticsService>().sendPageAnalytics(settings.name);
+    locator<AnalyticsService>().sendPageAnalytics(settings.name);
     // final Map<String, dynamic> args =
     //     settings.arguments as Map<String, dynamic>;
 
