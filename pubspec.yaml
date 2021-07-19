@@ -12,6 +12,7 @@ dependencies:
   flutter:
     sdk: flutter
 
+  alice: ^0.2.3
   dio: ^4.0.0
   dio_http_cache:
     git:

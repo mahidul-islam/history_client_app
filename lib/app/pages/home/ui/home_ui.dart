@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:history/app/bloc/notification/notification_bloc.dart';
 import 'package:history/app/pages/home/bloc/home_bloc.dart';
 import 'package:history/app/pages/home/model/home_model.dart';
 import 'package:history/app/routes/routes.dart';
+import 'package:history/shared/util/loader.dart';
 
 class HomeUI extends StatefulWidget {
   @override
@@ -43,12 +45,14 @@ class _HomeUIState extends State<HomeUI> {
                   listener: (BuildContext context, HomeState state) {
                     if (state is TopicListApiReqiestSuccessState) {
                       _topicList = state.topicList;
+                      BlocProvider.of<NotificationBloc>(context)
+                          .add(SuccessNotificationEvent('Page Reloaded !!!'));
                     }
                   },
                   builder: (BuildContext context, HomeState state) {
-                    // if (state is EventDetailsLoadingState) {
-                    //   return Center(child: PALoader.square());
-                    // }
+                    if (state is HomePageLoadingState) {
+                      return Center(child: Loader.circular());
+                    }
                     return RefreshIndicator(
                       onRefresh: () async {
                         _bloc.homeReload();

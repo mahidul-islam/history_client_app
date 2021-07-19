@@ -5,6 +5,8 @@ import 'package:history/app/observer/life_cycle_observer.dart';
 import 'package:history/app/routes/routes.dart';
 import 'package:history/app/routes/routes_generator.dart';
 import 'package:history/shared/analytics.dart';
+import 'package:history/shared/dio/alice.dart';
+import 'package:history/shared/dio/global_dio.dart';
 import 'package:history/shared/locator.dart';
 import 'package:history/shared/navigation_services.dart';
 
@@ -45,6 +47,7 @@ class _HistoryAppState extends State<HistoryApp> {
 
   @override
   Widget build(BuildContext context) {
+    dio.interceptors.add(alice.getDioInterceptor());
     return MultiBlocProvider(
       providers: <BlocProvider<dynamic>>[
         _notificationBlocProvider,
@@ -71,7 +74,30 @@ class _HistoryAppState extends State<HistoryApp> {
           builder: (BuildContext ctx, Widget? child) {
             return Scaffold(
               body: BlocListener<NotificationBloc, NotificationState>(
-                listener: (BuildContext context, NotificationState state) {},
+                listener: (BuildContext context, NotificationState state) {
+                  if (state is SuccessNotificationState) {
+                    ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('${state.message}'),
+                        backgroundColor: Colors.greenAccent,
+                      ),
+                    );
+                  } else if (state is ErrorNotificationState) {
+                    ScaffoldMessenger.of(context).removeCurrentSnackBar();
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      SnackBar(
+                        content: Text('${state.message}'),
+                        backgroundColor: Colors.redAccent,
+                      ),
+                    );
+                  } else if (state is NoInternetConnectionNotificationState) {
+                    // if (explanationBottomSheetAvailable == false) {
+                    //   explanationBottomSheetAvailable = true;
+                    //   noInternetConnectionBottomSheet(callback: callback);
+                    // }
+                  }
+                },
                 child: child!,
               ),
             );

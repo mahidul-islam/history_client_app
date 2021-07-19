@@ -23,7 +23,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     if (event is TopicListApiReqiestEvent) {
       yield HomePageLoadingState();
       unawaited(requestTopicListInfo(forceRefresh: event.forceRefresh));
-      yield HomePageUpdatedState();
+      // yield HomePageUpdatedState();
     } else if (event is TopicListApiReqiestSuccessEvent) {
       yield TopicListApiReqiestSuccessState(topicList: event.topicList);
     } else if (event is HomePageErrorEvent) {
