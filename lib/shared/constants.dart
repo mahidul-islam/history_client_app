@@ -9,6 +9,6 @@ class SharedConst {
   static const List<String> userNameList = ['mahidul-islam'];
 }
 
-class AssetConst {
+class JsonPath {
   static const String json_home_page = 'assets/json/home_page.json';
 }

@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:bloc/bloc.dart';
+import 'package:dartz/dartz.dart';
 import 'package:equatable/equatable.dart';
 import 'package:history/app/pages/home/model/home_model.dart';
 import 'package:history/app/pages/home/repo/home_repo.dart';
@@ -14,7 +15,7 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
     homeInit();
   }
 
-  final HttpTopicListApi _repo = HttpTopicListApi();
+  final TopicListRepo _repo = TopicListRepo();
 
   @override
   Stream<HomeState> mapEventToState(
@@ -32,14 +33,14 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> requestTopicListInfo({bool forceRefresh = false}) async {
-    final TopicList? _response =
+    final Either<String, TopicList> _response =
         await _repo.getTopicList(forceRefresh: forceRefresh);
 
-    if (_response == null) {
-      add(HomePageErrorEvent(error: 'Some error'));
-    } else {
-      add(TopicListApiReqiestSuccessEvent(topicList: _response));
-    }
+    _response.fold((String error) {
+      add(HomePageErrorEvent(error: error));
+    }, (TopicList result) {
+      add(TopicListApiReqiestSuccessEvent(topicList: result));
+    });
   }
 
   void homeInit() {
