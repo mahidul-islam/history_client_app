@@ -10,5 +10,6 @@ class SharedConst {
 }
 
 class JsonPath {
-  static const String json_home_page = 'assets/json/home_page.json';
+  static const String home_page = 'assets/json/home_page.json';
+  static const String topic_details = 'assets/json/topic_detials.json';
 }

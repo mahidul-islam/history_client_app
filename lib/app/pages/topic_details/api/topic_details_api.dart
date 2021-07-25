@@ -1,19 +1,21 @@
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 import 'package:flutter/services.dart';
+import 'package:history/app/pages/home/model/home_model.dart';
 import 'package:history/shared/constants.dart';
 import 'package:history/shared/dio/default_response.dart';
 import 'package:history/shared/dio/dio_helper.dart';
 import 'package:history/shared/dio/global_dio.dart' as global;
 
-abstract class HomeApi {
-  Future<Either<String, DefaultRes>> getTopicList({required bool forceRefresh});
+abstract class TopicDetailsApi {
+  Future<Either<String, DefaultRes>> getTopicDetails(
+      {required bool forceRefresh, required Topic topic});
 }
 
-class HttpHomeApi implements HomeApi {
+class HttpTopicDetailsApi implements TopicDetailsApi {
   @override
-  Future<Either<String, DefaultRes>> getTopicList(
-      {required bool forceRefresh}) async {
+  Future<Either<String, DefaultRes>> getTopicDetails(
+      {required bool forceRefresh, required Topic topic}) async {
     const String _url = 'topic_list.json';
     final Options options =
         await DioHelper.getDefaultOptions(forceRefresh: forceRefresh);
@@ -29,15 +31,15 @@ class HttpHomeApi implements HomeApi {
   }
 }
 
-class MockHomeApi implements HomeApi {
+class MockTopicDetailsApi implements TopicDetailsApi {
   @override
-  Future<Either<String, DefaultRes>> getTopicList(
-      {required bool forceRefresh}) async {
+  Future<Either<String, DefaultRes>> getTopicDetails(
+      {required bool forceRefresh, required Topic topic}) async {
     // await Future<bool>.delayed(const Duration(seconds: 1));
 
     return Right<String, DefaultRes>(
       DefaultRes.fromRawJson(
-        await rootBundle.loadString(JsonPath.home_page),
+        await rootBundle.loadString(JsonPath.topic_details),
       ),
     );
   }

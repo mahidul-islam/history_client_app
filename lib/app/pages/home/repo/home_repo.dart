@@ -4,8 +4,8 @@ import 'package:history/app/pages/home/model/home_model.dart';
 import 'package:history/shared/dio/default_response.dart';
 
 class TopicListRepo {
-  final HomeApi api = MockHomeApi();
-  // final HomeApi api = HttpHomeApi();
+  // final HomeApi api = MockHomeApi();
+  final HomeApi api = HttpHomeApi();
 
   Future<Either<String, TopicList>> getTopicList(
       {required bool forceRefresh}) async {
