@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:history/app/bloc/notification/notification_bloc.dart';
 import 'package:history/app/pages/home/bloc/home_bloc.dart';
+import 'package:history/app/pages/home/experiment.dart';
 import 'package:history/app/pages/home/model/home_model.dart';
 import 'package:history/app/routes/routes.dart';
 import 'package:history/shared/util/loader.dart';
@@ -37,6 +38,12 @@ class _HomeUIState extends State<HomeUI> {
         builder: (BuildContext context, HomeState state) {
           return Scaffold(
             backgroundColor: Colors.white,
+            floatingActionButton: FloatingActionButton(
+              onPressed: () {
+                Coderunner.runCode();
+              },
+              child: Icon(Icons.ac_unit_outlined),
+            ),
             body: AnnotatedRegion<SystemUiOverlayStyle>(
               value: SystemUiOverlayStyle.dark,
               child: BlocProvider<HomeBloc>(

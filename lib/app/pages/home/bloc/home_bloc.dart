@@ -33,13 +33,15 @@ class HomeBloc extends Bloc<HomeEvent, HomeState> {
   }
 
   Future<void> requestTopicListInfo({bool forceRefresh = false}) async {
-    final Either<String, TopicList> _response =
+    final Either<String, TopicList?> _response =
         await _repo.getTopicList(forceRefresh: forceRefresh);
 
     _response.fold((String error) {
       add(HomePageErrorEvent(error: error));
-    }, (TopicList result) {
-      add(TopicListApiReqiestSuccessEvent(topicList: result));
+    }, (TopicList? result) {
+      if (result != null) {
+        add(TopicListApiReqiestSuccessEvent(topicList: result));
+      }
     });
   }
 
