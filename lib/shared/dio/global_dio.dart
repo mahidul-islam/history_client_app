@@ -1,3 +1,5 @@
+library global;
+
 import 'package:dio/dio.dart';
 import 'package:history/shared/dio/dio_helper.dart';
 

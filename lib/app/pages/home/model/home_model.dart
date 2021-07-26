@@ -95,6 +95,7 @@ abstract class Topic implements Built<Topic, TopicBuilder> {
   int get start;
   int get end;
   int get eventCount;
+  int get newField;
 
   Topic._();
   factory Topic([void Function(TopicBuilder) updates]) = _$Topic;

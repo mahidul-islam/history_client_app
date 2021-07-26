@@ -8,6 +8,7 @@ part of 'serializers.dart';
 
 Serializers _$serializers = (new Serializers().toBuilder()
       ..add(Century.serializer)
+      ..add(DefaultRes.serializer)
       ..add(Topic.serializer)
       ..add(TopicDetails.serializer)
       ..add(TopicList.serializer)

@@ -77,6 +77,9 @@ class _$TopicSerializer implements StructuredSerializer<Topic> {
       'eventCount',
       serializers.serialize(object.eventCount,
           specifiedType: const FullType(int)),
+      'newField',
+      serializers.serialize(object.newField,
+          specifiedType: const FullType(int)),
     ];
 
     return result;
@@ -107,6 +110,10 @@ class _$TopicSerializer implements StructuredSerializer<Topic> {
           break;
         case 'eventCount':
           result.eventCount = serializers.deserialize(value,
+              specifiedType: const FullType(int)) as int;
+          break;
+        case 'newField':
+          result.newField = serializers.deserialize(value,
               specifiedType: const FullType(int)) as int;
           break;
       }
@@ -225,6 +232,8 @@ class _$Topic extends Topic {
   final int end;
   @override
   final int eventCount;
+  @override
+  final int newField;
 
   factory _$Topic([void Function(TopicBuilder)? updates]) =>
       (new TopicBuilder()..update(updates)).build();
@@ -233,12 +242,14 @@ class _$Topic extends Topic {
       {required this.name,
       required this.start,
       required this.end,
-      required this.eventCount})
+      required this.eventCount,
+      required this.newField})
       : super._() {
     BuiltValueNullFieldError.checkNotNull(name, 'Topic', 'name');
     BuiltValueNullFieldError.checkNotNull(start, 'Topic', 'start');
     BuiltValueNullFieldError.checkNotNull(end, 'Topic', 'end');
     BuiltValueNullFieldError.checkNotNull(eventCount, 'Topic', 'eventCount');
+    BuiltValueNullFieldError.checkNotNull(newField, 'Topic', 'newField');
   }
 
   @override
@@ -255,14 +266,16 @@ class _$Topic extends Topic {
         name == other.name &&
         start == other.start &&
         end == other.end &&
-        eventCount == other.eventCount;
+        eventCount == other.eventCount &&
+        newField == other.newField;
   }
 
   @override
   int get hashCode {
     return $jf($jc(
-        $jc($jc($jc(0, name.hashCode), start.hashCode), end.hashCode),
-        eventCount.hashCode));
+        $jc($jc($jc($jc(0, name.hashCode), start.hashCode), end.hashCode),
+            eventCount.hashCode),
+        newField.hashCode));
   }
 
   @override
@@ -271,7 +284,8 @@ class _$Topic extends Topic {
           ..add('name', name)
           ..add('start', start)
           ..add('end', end)
-          ..add('eventCount', eventCount))
+          ..add('eventCount', eventCount)
+          ..add('newField', newField))
         .toString();
   }
 }
@@ -295,6 +309,10 @@ class TopicBuilder implements Builder<Topic, TopicBuilder> {
   int? get eventCount => _$this._eventCount;
   set eventCount(int? eventCount) => _$this._eventCount = eventCount;
 
+  int? _newField;
+  int? get newField => _$this._newField;
+  set newField(int? newField) => _$this._newField = newField;
+
   TopicBuilder();
 
   TopicBuilder get _$this {
@@ -304,6 +322,7 @@ class TopicBuilder implements Builder<Topic, TopicBuilder> {
       _start = $v.start;
       _end = $v.end;
       _eventCount = $v.eventCount;
+      _newField = $v.newField;
       _$v = null;
     }
     return this;
@@ -329,7 +348,9 @@ class TopicBuilder implements Builder<Topic, TopicBuilder> {
                 BuiltValueNullFieldError.checkNotNull(start, 'Topic', 'start'),
             end: BuiltValueNullFieldError.checkNotNull(end, 'Topic', 'end'),
             eventCount: BuiltValueNullFieldError.checkNotNull(
-                eventCount, 'Topic', 'eventCount'));
+                eventCount, 'Topic', 'eventCount'),
+            newField: BuiltValueNullFieldError.checkNotNull(
+                newField, 'Topic', 'newField'));
     replace(_$result);
     return _$result;
   }

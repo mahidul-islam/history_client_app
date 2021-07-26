@@ -43,11 +43,12 @@ class _HistoryAppState extends State<HistoryApp> {
         return _notificationBloc;
       },
     );
+
+    dio.interceptors.add(alice.getDioInterceptor());
   }
 
   @override
   Widget build(BuildContext context) {
-    dio.interceptors.add(alice.getDioInterceptor());
     return MultiBlocProvider(
       providers: <BlocProvider<dynamic>>[
         _notificationBlocProvider,

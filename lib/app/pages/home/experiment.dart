@@ -1,7 +1,16 @@
+import 'dart:convert';
+
 import 'package:history/app/pages/home/model/home_model.dart';
 
 class Coderunner {
   static void runCode() {
+    var myJson = "{\"label\":{\"hello\":\"world\"}}";
+
+    var decodedJson = json.decode(myJson);
+    print(decodedJson.runtimeType);
+    var jsonValue = decodedJson['label'];
+    print(jsonValue.runtimeType);
+
     Topic topic = Topic((b) => b
       ..name = 'First'
       ..end = 1921

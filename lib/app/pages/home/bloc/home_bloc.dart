@@ -12,7 +12,7 @@ part 'home_state.dart';
 
 class HomeBloc extends Bloc<HomeEvent, HomeState> {
   HomeBloc() : super(HomeInitial()) {
-    homeInit();
+    // homeInit();
   }
 
   final TopicListRepo _repo = TopicListRepo();
